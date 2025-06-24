@@ -1,6 +1,19 @@
+/* google font  */
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
+
 @import "tailwindcss";
 
 
 a.active div {
     display: block;
+}
+
+* {
+    font-family: "Bebas Neue", sans-serif
+}
+
+.press-start-2p-regular {
+    font-family: "Press Start 2P", system-ui;
+    font-weight: 400;
+    font-style: normal;
 }
