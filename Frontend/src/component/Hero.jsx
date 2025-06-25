@@ -7,7 +7,7 @@ import { TypeAnimation } from 'react-type-animation';
 
 const Hero = () => {
     return (
-        <div className='flex flex-co sm:flex-row '>
+        <div className='flex flex-col sm:flex-row '>
             {/* left text  */}
             <div className='w-full sm:w-1/2 flex flex-col items-center justify-center py-10 sm:py-0 gap-15 sm:pl-40  sm:pt-40 text-nowrap'>
                 <div className='text-[#414141]'>
@@ -50,6 +50,7 @@ const Hero = () => {
                 {/* CSS for animation */}
                 <style>
                     {`
+                    @media (min-width: 640px) {
                     @keyframes updown {
                         0%, 100% { transform: translateY(0); }
                         50% { transform: translateY(-20px); }
@@ -57,8 +58,10 @@ const Hero = () => {
                     .animate-updown {
                         animation: updown 3s ease-in-out infinite;
                     }
-                    `}
+                    }
+                `}
                 </style>
+
             </div>
 
 
