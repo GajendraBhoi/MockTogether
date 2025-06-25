@@ -9,7 +9,8 @@ a.active div {
 }
 
 * {
-    font-family: "Bebas Neue", sans-serif
+    font-family: "Bebas Neue", sans-serif;
+    user-select: none;
 }
 
 .press-start-2p-regular {
