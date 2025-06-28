@@ -1,7 +1,7 @@
 import { Router, Route, Routes, BrowserRouter } from "react-router-dom"
 import Landing from "./pages/Landing"
 import Room from "./pages/Room"
-import Auth from "./pages/Auth"
+import { Login, Signup } from "./pages/Auth"
 import Dashboard from "./pages/Dashboard"
 import About from "./pages/About"
 import Navbar from "./component/Navbar"
@@ -22,7 +22,8 @@ function App() {
         <Route path="/profile" element={<Profile />} />
         <Route path="/about" element={<About />} />
         <Route path="/dashboard" element={<Dashboard />} />
-        <Route path="/auth" element={<Auth />} />
+        <Route path="/login" element={<Login />} />
+        <Route path="/signup" element={<Signup />} />
 
       </Routes>
     </div>

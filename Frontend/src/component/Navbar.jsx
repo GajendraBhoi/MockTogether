@@ -46,12 +46,24 @@ const Navbar = () => {
             </ul>
 
             <div className='flex items-center gap-6'>
-                <Link to='/login' className='hover:text-black'>LOG IN</Link>
-                <Link to='/signup' className='hover:text-black'>SIGN UP</Link>
+                <div className="flex space-x-4">
+                    <Link
+                        to="/login"
+                        className="press-start-2p-regular text-sm uppercase bg-blue-900 text-white px-4 py-2 rounded-xl shadow-md hover:bg-blue-800 hover:shadow-lg transition duration-200 ease-in-out cursor-pointer"
+                    >
+                        Log In
+                    </Link>
+                    <Link
+                        to="/signup"
+                        className="press-start-2p-regular text-sm uppercase border-2 border-blue-900 text-blue-900 px-4 py-2 rounded-xl hover:bg-blue-900 hover:text-white transition duration-200 ease-in-out cursor-pointer"
+                    >
+                        Sign Up
+                    </Link>
+                </div>
 
 
                 <Link to='/profile' className=''>
-                    <CgProfile className='text-3xl' />
+                    <CgProfile className='text-4xl' />
                 </Link>
 
                 <BiMenuAltRight onClick={() => { setVisible(true) }} className='text-3xl cursor-pointer sm:hidden ' />
@@ -78,3 +90,6 @@ const Navbar = () => {
 }
 
 export default Navbar
+
+
+// TODO : login and signup not working on homepage
