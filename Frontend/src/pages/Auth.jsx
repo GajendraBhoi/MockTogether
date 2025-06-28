@@ -3,6 +3,9 @@ import IMG from '../assets/login.png'
 import { FaUser } from "react-icons/fa";
 import { RiLockPasswordFill } from "react-icons/ri";
 
+
+
+
 export const Login = () => {
     return (
         <div className='w-full sm:h-[88vh] flex'>
@@ -14,10 +17,7 @@ export const Login = () => {
 
                 <form
                     className="w-full flex flex-col justify-center items-center gap-7 sm:w-[60%] z-10"
-                    onSubmit={e => {
-                        e.preventDefault();
-                        // your login handler here
-                    }}
+
                 >
                     {/* Heading */}
                     <div className="press-start-2p-regular text-3xl text-gray-800">
@@ -183,5 +183,3 @@ export const Signup = () => {
 
 
 
-
-// TODO : mobile responsive remaining

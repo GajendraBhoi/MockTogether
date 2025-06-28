@@ -11,7 +11,7 @@ const Navbar = () => {
     const [visible, setVisible] = useState(false);
 
     return (
-        <div className='flex items-center justify-between py-5 font-medium'>
+        <div className='relative z-50 flex items-center justify-between py-5 font-medium bg-white'>
             <img src={logo} className='w-36' alt='logo' />
 
 
@@ -21,26 +21,26 @@ const Navbar = () => {
 
                 {/* when we will open any navlink it will add active to its class name  */}
                 <NavLink to='/' className='flex flex-col items-center gap-1'>
-                    <p>HOME</p>
+                    <p className='press-start-2p-regular'>HOME</p>
                     <div className='w-2/4 h-[1.5px] bg-gray-700 hidden' />
                     {/* we will add active funcn in index.css  */}
                 </NavLink>
 
 
                 <NavLink to='/room' className='flex flex-col items-center gap-1'>
-                    <p>ROOMS</p>
+                    <p className='press-start-2p-regular'>ROOMS</p>
                     <div className='w-2/4 h-[1.5px] bg-gray-700 hidden' />
                 </NavLink>
 
 
                 <NavLink to='/about' className='flex flex-col items-center gap-1'>
-                    <p>ABOUT</p>
+                    <p className='press-start-2p-regular'>ABOUT</p>
                     <div className='w-2/4 h-[1.5px] bg-gray-700 hidden' />
                 </NavLink>
 
 
                 <NavLink to='/contact' className='flex flex-col items-center gap-1'>
-                    <p>CONTACT</p>
+                    <p className='press-start-2p-regular'>CONTACT</p>
                     <div className='w-2/4 h-[1.5px] bg-gray-700 hidden' />
                 </NavLink>
             </ul>
