@@ -8,6 +8,7 @@ function mongoConnect() {
             console.log("connected to DB");
         }).catch((error) => {
             console.log("Error in connecting DB : ", error);
+            process.exit(1);
         })
 }
 

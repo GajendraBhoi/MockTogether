@@ -5,12 +5,10 @@ const app = express();
 require('dotenv').config();
 const PORT = process.env.PORT || 8080;
 
-
-// const bodyParser = require('body-parser');
-// app.use(bodyParser.json()); // to parse the body of request
+app.use(express.json()); // to fetch data from body
 
 
-app.listen(PORT, (req, res) => {
+app.listen(PORT, () => {
     console.log(`server is running on port : ${PORT}`);
 })
 
@@ -20,9 +18,15 @@ app.use(cors()); // since the font and back are runnnig in different ports
 
 
 const dbConnect = require('./Config/database');
-const bodyParser = require('body-parser');
 dbConnect();
+
+// import route and mount 
+const userRoute = require('./Routes/User');
+app.use("/", userRoute);
+
 
 app.get('/', (req, res) => {
     res.send('<h1>App is running</h1>');
 })
+
+
