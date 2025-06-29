@@ -1,11 +1,11 @@
 import { Router, Route, Routes, BrowserRouter } from "react-router-dom"
 import Landing from "./pages/Landing"
-import Room from "./pages/Room"
 import { Login, Signup } from "./pages/Auth"
-import Dashboard from "./pages/Dashboard"
 import About from "./pages/About"
 import Navbar from "./component/Navbar"
 import Profile from "./pages/Profile"
+import CreateRoom from "./pages/Room/CreateRoom"
+import RoomPage from "./pages/Room/RoomPage"
 
 function App() {
 
@@ -18,10 +18,10 @@ function App() {
 
       <Routes>
         <Route path="/" element={<Landing />} />
-        <Route path="/room" element={<Room />} />
         <Route path="/profile" element={<Profile />} />
         <Route path="/about" element={<About />} />
-        <Route path="/dashboard" element={<Dashboard />} />
+        <Route path="/room" element={<RoomPage />} />
+        <Route path="/crateRoom" element={<CreateRoom />} />
         <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<Signup />} />
 

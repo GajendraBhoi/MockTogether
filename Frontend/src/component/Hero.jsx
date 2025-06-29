@@ -4,6 +4,7 @@ import FRONT from '../assets/front.png'
 import Button from './Button'
 
 import { TypeAnimation } from 'react-type-animation';
+import { Link } from 'react-router-dom';
 
 const Hero = () => {
     return (
@@ -32,7 +33,9 @@ const Hero = () => {
                 </div>
 
 
-                <Button text='CREATE ROOM' className='' />
+                <Link to='/crateRoom'>
+                    <Button text='CREATE ROOM' />
+                </Link>
             </div>
 
             <div className="w-full sm:w-1/2 relative">
