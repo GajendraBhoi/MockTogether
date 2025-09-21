@@ -1,100 +1,101 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { v4 as uuidv4 } from 'uuid';
+import toast from 'react-hot-toast';
 
-const CreateRoom = () => {
-    const [roomData, setRoomData] = useState({
-        roomName: '',
-        language: '',
-        maxParticipants: 4
+export default function CreateRoom() {
+  const [roomId, setRoomId] = useState('');
+  const [username, setUsername] = useState('');
+  const navigate = useNavigate();
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    if (!roomId.trim() || !username.trim()){
+      toast.error('Fill  Credentials');
+      return;
+    }
+    navigate(`/room/${roomId}?user=${username}`,{
+      state:{ // we can use this state the redirected page
+        username,
+      }
     });
+  };
 
-    const navigate = useNavigate();
-    const languages = ['JavaScript', 'Python', 'Java', 'C++', 'TypeScript', 'Go', 'Ruby', 'PHP'];
 
-    const handleChange = (e) => {
-        const { name, value } = e.target;
-        setRoomData(prev => ({
-            ...prev,
-            [name]: value
-        }));
-    };
+  const createNewRoomId = (e) => {
+    e.preventDefault();
+    const roomId = uuidv4();
+    // console.log(roomId);
+    setRoomId(roomId);
+    toast.success('RoomId Created');
+  }
 
-    const handleSubmit = (e) => {
-        e.preventDefault();
-        // Here you would typically send the data to your backend
-        console.log('Creating room:', roomData);
-        // Navigate to the room after creation
-        navigate(`/room/${roomData.roomName}`);
-    };
+  const handleEnterKeyPress = (e) => { // callling the function on enter press 
+    e.preventDefault();
+    // console.log('event ', e.code);
+    if(e.code === 'Enter'){
+      handleSubmit(); 
+    }
 
-    return (
-        <div className="min-h-screen bg-gray-50 flex flex-col items-center justify-center p-4">
-            <div className="w-full max-w-md bg-white rounded-xl shadow-md p-8">
-                <h1 className="text-3xl font-bold text-center mb-2">CODE TOGETHER</h1>
-                <h2 className="text-xl font-semibold text-center mb-6">Create Room</h2>
+  }
 
-                <form onSubmit={handleSubmit} className="space-y-6">
-                    <div>
-                        <label htmlFor="roomName" className="block text-sm font-medium text-gray-700 mb-1">
-                            Room Name
-                        </label>
-                        <input
-                            type="text"
-                            id="roomName"
-                            name="roomName"
-                            value={roomData.roomName}
-                            onChange={handleChange}
-                            required
-                            className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
-                            placeholder="Enter room name"
-                        />
-                    </div>
+  return (
+    <div className="min-h-screen bg-gradient-to-b from-white via-gray-50 to-gray-100 flex items-center justify-center p-6">
+      <div className="w-full max-w-xl bg-white border border-gray-200 rounded-2xl p-10 shadow-lg">
+        <div className=" press-start-2p-regular flex flex-col items-center text-center">
 
-                    <div>
-                        <label htmlFor="language" className="block text-sm font-medium text-gray-700 mb-1">
-                            Language
-                        </label>
-                        <select
-                            id="language"
-                            name="language"
-                            value={roomData.language}
-                            onChange={handleChange}
-                            required
-                            className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 appearance-none"
-                        >
-                            <option value="">Select...</option>
-                            {languages.map((lang) => (
-                                <option key={lang} value={lang}>{lang}</option>
-                            ))}
-                        </select>
-                    </div>
+          <div className="text-center mb-8">
+            <h2 className="press-start-2p-regular text-3xl md:text-4xl font-extrabold tracking-tight text-gray-800">MOCKTOGETHER</h2>
+          </div>
 
-                    <div>
-                        <label htmlFor="maxParticipants" className="block text-sm font-medium text-gray-700 mb-1">
-                            Max Participants
-                        </label>
-                        <input
-                            type="number"
-                            id="maxParticipants"
-                            name="maxParticipants"
-                            min="1"
-                            max="5"
-                            value={roomData.maxParticipants}
-                            onChange={handleChange}
-                            className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
-                        />
-                    </div>
+          <h1 className="press-start-2p-regular font-bold mb-8 text-gray-700">Enter the ROOM ID</h1>
 
-                    <button
-                        type="submit"
-                        className="w-full bg-blue-600 hover:bg-blue-700 text-white font-medium py-2 px-4 rounded-lg transition duration-200 flex items-center justify-center"
-                    >
-                        CREATE ROOM →
-                    </button>
-                </form>
+          <form onSubmit={handleSubmit} className="w-full space-y-6">
+            <input
+              type="text"
+              name="roomId"
+              value={roomId}
+              onChange={(e) => setRoomId(e.target.value)}
+              placeholder="ROOM ID"
+              className="press-start-2p-regular w-[1/2] bg-gray-50 border border-gray-300 text-gray-800 placeholder-gray-400 rounded-xl px-5 py-4 text-lg font-medium focus:outline-none focus:ring-2 focus:ring-blue-400 focus:border-blue-400 transition"
+              onKeyUp={handleEnterKeyPress}
+              // required
+            />
+
+            <input
+              type="text"
+              name="username"
+              value={username}
+              onChange={(e) => setUsername(e.target.value)}
+              placeholder="USERNAME"
+              className=" press-start-2p-regular w-[1/2] bg-gray-50 border border-gray-300 text-gray-800 placeholder-gray-400 rounded-xl px-5 py-4 text-lg font-medium focus:outline-none focus:ring-2 focus:ring-blue-400 focus:border-blue-400 transition"
+              onKeyUp={handleEnterKeyPress}
+              // required
+            />
+
+            <div className="flex justify-center">
+              <button
+                type="submit"
+                className="press-start-2p-regular  uppercase bg-blue-900 text-white px-4 py-2 rounded-xl shadow-md hover:bg-blue-800 hover:shadow-lg transition duration-200 ease-in-out cursor-pointer"
+              >
+                JOIN
+              </button>
             </div>
-        </div>
-    );
-};
 
-export default CreateRoom;
+            <div className="mt-6 text-center">
+              <span className="text-sm text-gray-600">Don't have a room ID? </span>
+              <button
+                type="button"
+                onClick={createNewRoomId}
+                className="hover:underline font-medium ml-1  text-blue-900 cursor-pointer"
+              >
+                Create New RoomID
+              </button>
+            </div>
+          </form>
+
+        </div>
+      </div>
+    </div>
+  );
+}
