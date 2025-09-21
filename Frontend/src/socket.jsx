@@ -7,7 +7,7 @@ export const initSocket = () => {
     timeout: 10000,
     transports: ['websocket']
   };
-  const url = import.meta.env.VITE_BACKEND_URL || 'http://localhost:3000';
+  const url = import.meta.env.VITE_BACKEND_URL || 'https://mocktogether-backend.onrender.com';
   return io(url, options);
 };
 

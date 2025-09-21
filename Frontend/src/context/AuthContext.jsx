@@ -14,7 +14,7 @@ export function AuthProvider({ children }) {
 
     const validateAuth = useCallback(async () => {
         try {
-            const response = await fetch('http://localhost:3000/validate-token', {
+            const response = await fetch('https://mocktogether-backend.onrender.com/validate-token', {
                 credentials: 'include'
             });
 
@@ -49,7 +49,7 @@ export function AuthProvider({ children }) {
 
     const login = async (email, password) => {
         try {
-            const response = await fetch('http://localhost:3000/login', {
+            const response = await fetch('https://mocktogether-backend.onrender.com/login', {
                 method: 'POST',
                 credentials: 'include',
                 headers: {
@@ -79,7 +79,7 @@ export function AuthProvider({ children }) {
 
     const logout = async () => {
         try {
-            await fetch('http://localhost:3000/logout', {
+            await fetch('https://mocktogether-backend.onrender.com/logout', {
                 method: 'POST',
                 credentials: 'include'
             });
