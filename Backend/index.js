@@ -13,7 +13,7 @@ app.use(express.json());            // parse JSON bodies
 app.use(cookieParser());            // parse cookies
 
 const corsOptions = {
-    origin: process.env.FRONTEND_URL || 'http://localhost:5173',
+    origin: process.env.FRONTEND_URL || 'https://mocktogether.onrender.com',
     credentials: true,
 };
 app.use(cors(corsOptions));         //  enable CORS (handles preflight too)
