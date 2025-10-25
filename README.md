@@ -1,6 +1,6 @@
 # CodeTogether - Real-time Collaborative Coding Platform
 
-![CodeTogether Screenshot](screenshot.png)
+![Live Link]([screenshot.png](https://mocktogether.onrender.com/))
 
 ## Table of Contents
 - [Introduction](#introduction)
